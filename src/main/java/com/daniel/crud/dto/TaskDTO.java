@@ -14,7 +14,7 @@ import jakarta.validation.constraints.NotEmpty;
 public record TaskDTO(
     @JsonProperty("_id") Long id,
     @NotBlank @Length(min = 0, max = 30) String descricao,
-    @NotBlank Boolean completo) 
+    Boolean completo) 
     {
 
 }
