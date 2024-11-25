@@ -76,5 +76,11 @@ public class TaskController {
     public TaskDTO completarTask(@PathVariable @NotNull @Positive Long id){
         return taskService.completarTask(id); 
     }
+
+    @GetMapping("cancelar-conclusao-task/{id}")
+    public TaskDTO cacelarConclusaoTask(@PathVariable @NotNull @Positive Long id) {
+        return taskService.cancelarConclusaoTask(id);
+    }
+    
     
 }

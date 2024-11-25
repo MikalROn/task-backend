@@ -88,5 +88,15 @@ public class TaskService {
             return taskMapper.toDTO(taskRepository.save(recordFound));
         }).orElseThrow(() -> new RecordNotFoundException(id));
     }
+
+
+    public TaskDTO cancelarConclusaoTask(@NotNull @Positive Long id) {
+        return taskRepository.findById(id).map(
+            recordFound -> {
+                recordFound.setCompleto(false);
+                return taskMapper.toDTO(taskRepository.save(recordFound));
+            }
+        ).orElseThrow(() -> new RecordNotFoundException(id));
+    }
         
 }
