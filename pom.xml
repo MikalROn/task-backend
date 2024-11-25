@@ -67,6 +67,12 @@
 			<version>3.0.2</version> <!-- ou uma versão compatível -->
 		</dependency>
 
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.33</version> 
+			<scope>runtime</scope>
+		</dependency>
 
 		<dependency>
 			<groupId>org.hibernate.validator</groupId>

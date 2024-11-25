@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  mysql_db:
+    image: mysql:8.0
+    container_name: mysql_db
+    environment:
+      MYSQL_ROOT_PASSWORD: password  # Senha do root para o MySQL
+      MYSQL_DATABASE: tasks          # Banco de dados que será criado automaticamente
+    ports:
+      - "3306:3306"                  # Mapeia a porta 3306 do MySQL para o host
+    volumes:
+      - mysql_data:/var/lib/mysql    # Volume persistente para os dados do MySQL
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:5.1 # Use uma versão específica do phpmyadmin
+    restart: always
+    container_name: admin
+    environment:
+      PMA_HOST: mysql_db             # Nome do serviço MySQL no Docker
+      PMA_PORT: 3306                 # Porta do MySQL
+    ports:
+      - "8081:80"                    # Acesso ao phpMyAdmin pela porta 8081
+    depends_on:
+      - mysql_db                     # Garante que o mysql_db seja iniciado antes do phpMyAdmin
+
+volumes:
+  mysql_data:
+    driver: local
